@@ -11,7 +11,7 @@ namespace MediaTek86
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm()); // Formulaire de démarrage
+            Application.Run(new LoginForm());
         }
     }
 }
