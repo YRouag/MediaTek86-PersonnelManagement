@@ -1,13 +1,18 @@
 using System;
 using System.Windows.Forms;
+using MediaTek86.Controllers;
+using MediaTek86.Modele;
 
 namespace MediaTek86.Views
 {
     public partial class AjouterAbsenceForm : Form
     {
+        private AbsenceController absenceController;
+
         public AjouterAbsenceForm()
         {
             InitializeComponent();
+            absenceController = new AbsenceController();
         }
 
         private void InitializeComponent()
@@ -131,7 +136,17 @@ namespace MediaTek86.Views
 
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
-            // Logic to add new absence
+            Absence absence = new Absence(
+                int.Parse(comboBoxNom.SelectedValue.ToString()),
+                dateTimePickerDebut.Value,
+                dateTimePickerFin.Value,
+                int.Parse(comboBoxMotif.SelectedValue.ToString())
+            );
+
+            absenceController.AddAbsence(absence);
+
+            MessageBox.Show("Absence ajoutée avec succès !");
+            this.Close();
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)

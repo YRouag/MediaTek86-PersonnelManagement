@@ -1,25 +1,35 @@
 using System;
 using System.Windows.Forms;
+using MediaTek86.Controllers;
+using MediaTek86.Modele;
 
 namespace MediaTek86.Views
 {
-    public partial class ModifierAbsenceForm : Form
+    public partial class ModifierPersonnelForm : Form
     {
-        public ModifierAbsenceForm()
+        private Personnel personnel;
+        private PersonnelController personnelController;
+
+        public ModifierPersonnelForm(Personnel personnel)
         {
             InitializeComponent();
+            this.personnel = personnel;
+            personnelController = new PersonnelController();
+            PopulateFields();
         }
 
         private void InitializeComponent()
         {
             this.labelNom = new System.Windows.Forms.Label();
-            this.labelDateDebut = new System.Windows.Forms.Label();
-            this.labelDateFin = new System.Windows.Forms.Label();
-            this.labelMotif = new System.Windows.Forms.Label();
-            this.comboBoxNom = new System.Windows.Forms.ComboBox();
-            this.dateTimePickerDebut = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxMotif = new System.Windows.Forms.ComboBox();
+            this.labelPrenom = new System.Windows.Forms.Label();
+            this.labelTel = new System.Windows.Forms.Label();
+            this.labelMail = new System.Windows.Forms.Label();
+            this.labelService = new System.Windows.Forms.Label();
+            this.textBoxNom = new System.Windows.Forms.TextBox();
+            this.textBoxPrenom = new System.Windows.Forms.TextBox();
+            this.textBoxTel = new System.Windows.Forms.TextBox();
+            this.textBoxMail = new System.Windows.Forms.TextBox();
+            this.comboBoxService = new System.Windows.Forms.ComboBox();
             this.buttonEnregistrer = new System.Windows.Forms.Button();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -33,105 +43,140 @@ namespace MediaTek86.Views
             this.labelNom.TabIndex = 0;
             this.labelNom.Text = "Nom";
             // 
-            // labelDateDebut
+            // labelPrenom
             // 
-            this.labelDateDebut.AutoSize = true;
-            this.labelDateDebut.Location = new System.Drawing.Point(13, 39);
-            this.labelDateDebut.Name = "labelDateDebut";
-            this.labelDateDebut.Size = new System.Drawing.Size(66, 13);
-            this.labelDateDebut.TabIndex = 1;
-            this.labelDateDebut.Text = "Date Début";
+            this.labelPrenom.AutoSize = true;
+            this.labelPrenom.Location = new System.Drawing.Point(13, 39);
+            this.labelPrenom.Name = "labelPrenom";
+            this.labelPrenom.Size = new System.Drawing.Size(43, 13);
+            this.labelPrenom.TabIndex = 1;
+            this.labelPrenom.Text = "Prénom";
             // 
-            // labelDateFin
+            // labelTel
             // 
-            this.labelDateFin.AutoSize = true;
-            this.labelDateFin.Location = new System.Drawing.Point(13, 65);
-            this.labelDateFin.Name = "labelDateFin";
-            this.labelDateFin.Size = new System.Drawing.Size(53, 13);
-            this.labelDateFin.TabIndex = 2;
-            this.labelDateFin.Text = "Date Fin";
+            this.labelTel.AutoSize = true;
+            this.labelTel.Location = new System.Drawing.Point(13, 65);
+            this.labelTel.Name = "labelTel";
+            this.labelTel.Size = new System.Drawing.Size(25, 13);
+            this.labelTel.TabIndex = 2;
+            this.labelTel.Text = "Tel";
             // 
-            // labelMotif
+            // labelMail
             // 
-            this.labelMotif.AutoSize = true;
-            this.labelMotif.Location = new System.Drawing.Point(13, 91);
-            this.labelMotif.Name = "labelMotif";
-            this.labelMotif.Size = new System.Drawing.Size(31, 13);
-            this.labelMotif.TabIndex = 3;
-            this.labelMotif.Text = "Motif";
+            this.labelMail.AutoSize = true;
+            this.labelMail.Location = new System.Drawing.Point(13, 91);
+            this.labelMail.Name = "labelMail";
+            this.labelMail.Size = new System.Drawing.Size(26, 13);
+            this.labelMail.TabIndex = 3;
+            this.labelMail.Text = "Mail";
             // 
-            // comboBoxNom
+            // labelService
             // 
-            this.comboBoxNom.FormattingEnabled = true;
-            this.comboBoxNom.Location = new System.Drawing.Point(85, 10);
-            this.comboBoxNom.Name = "comboBoxNom";
-            this.comboBoxNom.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxNom.TabIndex = 4;
+            this.labelService.AutoSize = true;
+            this.labelService.Location = new System.Drawing.Point(13, 117);
+            this.labelService.Name = "labelService";
+            this.labelService.Size = new System.Drawing.Size(43, 13);
+            this.labelService.TabIndex = 4;
+            this.labelService.Text = "Service";
             // 
-            // dateTimePickerDebut
+            // textBoxNom
             // 
-            this.dateTimePickerDebut.Location = new System.Drawing.Point(85, 36);
-            this.dateTimePickerDebut.Name = "dateTimePickerDebut";
-            this.dateTimePickerDebut.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerDebut.TabIndex = 5;
+            this.textBoxNom.Location = new System.Drawing.Point(72, 10);
+            this.textBoxNom.Name = "textBoxNom";
+            this.textBoxNom.Size = new System.Drawing.Size(200, 20);
+            this.textBoxNom.TabIndex = 5;
             // 
-            // dateTimePickerFin
+            // textBoxPrenom
             // 
-            this.dateTimePickerFin.Location = new System.Drawing.Point(85, 62);
-            this.dateTimePickerFin.Name = "dateTimePickerFin";
-            this.dateTimePickerFin.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerFin.TabIndex = 6;
+            this.textBoxPrenom.Location = new System.Drawing.Point(72, 36);
+            this.textBoxPrenom.Name = "textBoxPrenom";
+            this.textBoxPrenom.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPrenom.TabIndex = 6;
             // 
-            // comboBoxMotif
+            // textBoxTel
             // 
-            this.comboBoxMotif.FormattingEnabled = true;
-            this.comboBoxMotif.Location = new System.Drawing.Point(85, 88);
-            this.comboBoxMotif.Name = "comboBoxMotif";
-            this.comboBoxMotif.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxMotif.TabIndex = 7;
+            this.textBoxTel.Location = new System.Drawing.Point(72, 62);
+            this.textBoxTel.Name = "textBoxTel";
+            this.textBoxTel.Size = new System.Drawing.Size(200, 20);
+            this.textBoxTel.TabIndex = 7;
+            // 
+            // textBoxMail
+            // 
+            this.textBoxMail.Location = new System.Drawing.Point(72, 88);
+            this.textBoxMail.Name = "textBoxMail";
+            this.textBoxMail.Size = new System.Drawing.Size(200, 20);
+            this.textBoxMail.TabIndex = 8;
+            // 
+            // comboBoxService
+            // 
+            this.comboBoxService.FormattingEnabled = true;
+            this.comboBoxService.Location = new System.Drawing.Point(72, 114);
+            this.comboBoxService.Name = "comboBoxService";
+            this.comboBoxService.Size = new System.Drawing.Size(200, 21);
+            this.comboBoxService.TabIndex = 9;
             // 
             // buttonEnregistrer
             // 
-            this.buttonEnregistrer.Location = new System.Drawing.Point(210, 115);
+            this.buttonEnregistrer.Location = new System.Drawing.Point(197, 141);
             this.buttonEnregistrer.Name = "buttonEnregistrer";
             this.buttonEnregistrer.Size = new System.Drawing.Size(75, 23);
-            this.buttonEnregistrer.TabIndex = 8;
+            this.buttonEnregistrer.TabIndex = 10;
             this.buttonEnregistrer.Text = "Enregistrer";
             this.buttonEnregistrer.UseVisualStyleBackColor = true;
             this.buttonEnregistrer.Click += new System.EventHandler(this.buttonEnregistrer_Click);
             // 
             // buttonRetour
             // 
-            this.buttonRetour.Location = new System.Drawing.Point(129, 115);
+            this.buttonRetour.Location = new System.Drawing.Point(116, 141);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(75, 23);
-            this.buttonRetour.TabIndex = 9;
+            this.buttonRetour.TabIndex = 11;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = true;
             this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
             // 
-            // ModifierAbsenceForm
+            // ModifierPersonnelForm
             // 
-            this.ClientSize = new System.Drawing.Size(297, 150);
+            this.ClientSize = new System.Drawing.Size(284, 176);
             this.Controls.Add(this.buttonRetour);
             this.Controls.Add(this.buttonEnregistrer);
-            this.Controls.Add(this.comboBoxMotif);
-            this.Controls.Add(this.dateTimePickerFin);
-            this.Controls.Add(this.dateTimePickerDebut);
-            this.Controls.Add(this.comboBoxNom);
-            this.Controls.Add(this.labelMotif);
-            this.Controls.Add(this.labelDateFin);
-            this.Controls.Add(this.labelDateDebut);
+            this.Controls.Add(this.comboBoxService);
+            this.Controls.Add(this.textBoxMail);
+            this.Controls.Add(this.textBoxTel);
+            this.Controls.Add(this.textBoxPrenom);
+            this.Controls.Add(this.textBoxNom);
+            this.Controls.Add(this.labelService);
+            this.Controls.Add(this.labelMail);
+            this.Controls.Add(this.labelTel);
+            this.Controls.Add(this.labelPrenom);
             this.Controls.Add(this.labelNom);
-            this.Name = "ModifierAbsenceForm";
-            this.Text = "Modifier Absence";
+            this.Name = "ModifierPersonnelForm";
+            this.Text = "Modifier Personnel";
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
+        private void PopulateFields()
+        {
+            textBoxNom.Text = personnel.Nom;
+            textBoxPrenom.Text = personnel.Prenom;
+            textBoxTel.Text = personnel.Tel;
+            textBoxMail.Text = personnel.Mail;
+            comboBoxService.SelectedValue = personnel.IdService;
+        }
+
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
-            // Logic to modify existing absence
+            personnel.Nom = textBoxNom.Text;
+            personnel.Prenom = textBoxPrenom.Text;
+            personnel.Tel = textBoxTel.Text;
+            personnel.Mail = textBoxMail.Text;
+            personnel.IdService = int.Parse(comboBoxService.SelectedValue.ToString());
+
+            personnelController.UpdatePersonnel(personnel);
+
+            MessageBox.Show("Personnel modifié avec succès !");
+            this.Close();
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
@@ -140,13 +185,15 @@ namespace MediaTek86.Views
         }
 
         private System.Windows.Forms.Label labelNom;
-        private System.Windows.Forms.Label labelDateDebut;
-        private System.Windows.Forms.Label labelDateFin;
-        private System.Windows.Forms.Label labelMotif;
-        private System.Windows.Forms.ComboBox comboBoxNom;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDebut;
-        private System.Windows.Forms.DateTimePicker dateTimePickerFin;
-        private System.Windows.Forms.ComboBox comboBoxMotif;
+        private System.Windows.Forms.Label labelPrenom;
+        private System.Windows.Forms.Label labelTel;
+        private System.Windows.Forms.Label labelMail;
+        private System.Windows.Forms.Label labelService;
+        private System.Windows.Forms.TextBox textBoxNom;
+        private System.Windows.Forms.TextBox textBoxPrenom;
+        private System.Windows.Forms.TextBox textBoxTel;
+        private System.Windows.Forms.TextBox textBoxMail;
+        private System.Windows.Forms.ComboBox comboBoxService;
         private System.Windows.Forms.Button buttonEnregistrer;
         private System.Windows.Forms.Button buttonRetour;
     }

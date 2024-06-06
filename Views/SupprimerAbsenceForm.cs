@@ -1,13 +1,19 @@
 using System;
+using System.Data;
 using System.Windows.Forms;
+using MediaTek86.Controllers;
 
 namespace MediaTek86.Views
 {
     public partial class SupprimerAbsenceForm : Form
     {
+        private AbsenceController absenceController;
+
         public SupprimerAbsenceForm()
         {
             InitializeComponent();
+            absenceController = new AbsenceController();
+            LoadAbsenceList();
         }
 
         private void InitializeComponent()
@@ -54,12 +60,31 @@ namespace MediaTek86.Views
             this.Name = "SupprimerAbsenceForm";
             this.Text = "Supprimer Absence";
             this.ResumeLayout(false);
+        }
 
+        private void LoadAbsenceList()
+        {
+            DataTable absencesTable = absenceController.GetAllAbsences();
+            listBoxAbsences.DataSource = absencesTable;
+            listBoxAbsences.DisplayMember = "nom"; // Afficher le nom dans la liste
+            listBoxAbsences.ValueMember = "idpersonnel"; // Utiliser l'id comme valeur
         }
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
-            // Logic to remove absence
+            if (listBoxAbsences.SelectedItem != null)
+            {
+                int selectedPersonnelId = (int)listBoxAbsences.SelectedValue;
+                DateTime selectedDateDebut = (DateTime)listBoxAbsences.SelectedValue;
+                absenceController.DeleteAbsence(selectedPersonnelId, selectedDateDebut);
+
+                MessageBox.Show("Absence supprimée avec succès !");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une absence à supprimer.");
+            }
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)

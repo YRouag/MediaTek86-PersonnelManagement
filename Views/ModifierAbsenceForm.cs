@@ -1,13 +1,21 @@
 using System;
 using System.Windows.Forms;
+using MediaTek86.Controllers;
+using MediaTek86.Modele;
 
 namespace MediaTek86.Views
 {
     public partial class ModifierAbsenceForm : Form
     {
-        public ModifierAbsenceForm()
+        private Absence absence;
+        private AbsenceController absenceController;
+
+        public ModifierAbsenceForm(Absence absence)
         {
             InitializeComponent();
+            this.absence = absence;
+            absenceController = new AbsenceController();
+            PopulateFields();
         }
 
         private void InitializeComponent()
@@ -21,6 +29,7 @@ namespace MediaTek86.Views
             this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
             this.comboBoxMotif = new System.Windows.Forms.ComboBox();
             this.buttonEnregistrer = new System.Windows.Forms.Button();
+            this.buttonRetour = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelNom
@@ -99,9 +108,20 @@ namespace MediaTek86.Views
             this.buttonEnregistrer.UseVisualStyleBackColor = true;
             this.buttonEnregistrer.Click += new System.EventHandler(this.buttonEnregistrer_Click);
             // 
+            // buttonRetour
+            // 
+            this.buttonRetour.Location = new System.Drawing.Point(129, 115);
+            this.buttonRetour.Name = "buttonRetour";
+            this.buttonRetour.Size = new System.Drawing.Size(75, 23);
+            this.buttonRetour.TabIndex = 9;
+            this.buttonRetour.Text = "Retour";
+            this.buttonRetour.UseVisualStyleBackColor = true;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
+            // 
             // ModifierAbsenceForm
             // 
             this.ClientSize = new System.Drawing.Size(297, 150);
+            this.Controls.Add(this.buttonRetour);
             this.Controls.Add(this.buttonEnregistrer);
             this.Controls.Add(this.comboBoxMotif);
             this.Controls.Add(this.dateTimePickerFin);
@@ -117,9 +137,30 @@ namespace MediaTek86.Views
             this.PerformLayout();
         }
 
+        private void PopulateFields()
+        {
+            comboBoxNom.SelectedValue = absence.IdPersonnel;
+            dateTimePickerDebut.Value = absence.DateDebut;
+            dateTimePickerFin.Value = absence.DateFin;
+            comboBoxMotif.SelectedValue = absence.IdMotif;
+        }
+
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
-            // Logic to modify existing absence
+            absence.IdPersonnel = int.Parse(comboBoxNom.SelectedValue.ToString());
+            absence.DateDebut = dateTimePickerDebut.Value;
+            absence.DateFin = dateTimePickerFin.Value;
+            absence.IdMotif = int.Parse(comboBoxMotif.SelectedValue.ToString());
+
+            absenceController.UpdateAbsence(absence);
+
+            MessageBox.Show("Absence modifiée avec succès !");
+            this.Close();
+        }
+
+        private void buttonRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private System.Windows.Forms.Label labelNom;
@@ -131,5 +172,6 @@ namespace MediaTek86.Views
         private System.Windows.Forms.DateTimePicker dateTimePickerFin;
         private System.Windows.Forms.ComboBox comboBoxMotif;
         private System.Windows.Forms.Button buttonEnregistrer;
+        private System.Windows.Forms.Button buttonRetour;
     }
 }

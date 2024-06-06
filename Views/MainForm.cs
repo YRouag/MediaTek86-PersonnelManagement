@@ -1,13 +1,20 @@
 using System;
+using System.Data;
 using System.Windows.Forms;
+using MediaTek86.Controllers;
+using MediaTek86.Modele;
 
 namespace MediaTek86.Views
 {
     public partial class MainForm : Form
     {
+        private PersonnelController personnelController;
+
         public MainForm()
         {
             InitializeComponent();
+            personnelController = new PersonnelController();
+            LoadPersonnelData();
         }
 
         private void InitializeComponent()
@@ -21,6 +28,8 @@ namespace MediaTek86.Views
             this.btnModifierAbsence = new System.Windows.Forms.Button();
             this.btnSupprimerAbsence = new System.Windows.Forms.Button();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.dataGridViewPersonnel = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonnel)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAfficherPersonnel
@@ -35,7 +44,7 @@ namespace MediaTek86.Views
             // 
             // btnAjouterPersonnel
             // 
-            this.btnAjouterPersonnel.Location = new System.Drawing.Point(50, 66);
+            this.btnAjouterPersonnel.Location = new System.Drawing.Point(50, 70);
             this.btnAjouterPersonnel.Name = "btnAjouterPersonnel";
             this.btnAjouterPersonnel.Size = new System.Drawing.Size(200, 30);
             this.btnAjouterPersonnel.TabIndex = 1;
@@ -45,7 +54,7 @@ namespace MediaTek86.Views
             // 
             // btnModifierPersonnel
             // 
-            this.btnModifierPersonnel.Location = new System.Drawing.Point(50, 102);
+            this.btnModifierPersonnel.Location = new System.Drawing.Point(50, 110);
             this.btnModifierPersonnel.Name = "btnModifierPersonnel";
             this.btnModifierPersonnel.Size = new System.Drawing.Size(200, 30);
             this.btnModifierPersonnel.TabIndex = 2;
@@ -55,7 +64,7 @@ namespace MediaTek86.Views
             // 
             // btnSupprimerPersonnel
             // 
-            this.btnSupprimerPersonnel.Location = new System.Drawing.Point(50, 138);
+            this.btnSupprimerPersonnel.Location = new System.Drawing.Point(50, 150);
             this.btnSupprimerPersonnel.Name = "btnSupprimerPersonnel";
             this.btnSupprimerPersonnel.Size = new System.Drawing.Size(200, 30);
             this.btnSupprimerPersonnel.TabIndex = 3;
@@ -65,7 +74,7 @@ namespace MediaTek86.Views
             // 
             // btnAfficherAbsences
             // 
-            this.btnAfficherAbsences.Location = new System.Drawing.Point(50, 202);
+            this.btnAfficherAbsences.Location = new System.Drawing.Point(50, 190);
             this.btnAfficherAbsences.Name = "btnAfficherAbsences";
             this.btnAfficherAbsences.Size = new System.Drawing.Size(200, 30);
             this.btnAfficherAbsences.TabIndex = 4;
@@ -75,7 +84,7 @@ namespace MediaTek86.Views
             // 
             // btnAjouterAbsence
             // 
-            this.btnAjouterAbsence.Location = new System.Drawing.Point(50, 238);
+            this.btnAjouterAbsence.Location = new System.Drawing.Point(50, 230);
             this.btnAjouterAbsence.Name = "btnAjouterAbsence";
             this.btnAjouterAbsence.Size = new System.Drawing.Size(200, 30);
             this.btnAjouterAbsence.TabIndex = 5;
@@ -85,7 +94,7 @@ namespace MediaTek86.Views
             // 
             // btnModifierAbsence
             // 
-            this.btnModifierAbsence.Location = new System.Drawing.Point(50, 274);
+            this.btnModifierAbsence.Location = new System.Drawing.Point(50, 270);
             this.btnModifierAbsence.Name = "btnModifierAbsence";
             this.btnModifierAbsence.Size = new System.Drawing.Size(200, 30);
             this.btnModifierAbsence.TabIndex = 6;
@@ -105,7 +114,7 @@ namespace MediaTek86.Views
             // 
             // btnRetour
             // 
-            this.btnRetour.Location = new System.Drawing.Point(50, 358);
+            this.btnRetour.Location = new System.Drawing.Point(50, 350);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(200, 30);
             this.btnRetour.TabIndex = 8;
@@ -113,9 +122,18 @@ namespace MediaTek86.Views
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
+            // dataGridViewPersonnel
+            // 
+            this.dataGridViewPersonnel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPersonnel.Location = new System.Drawing.Point(270, 30);
+            this.dataGridViewPersonnel.Name = "dataGridViewPersonnel";
+            this.dataGridViewPersonnel.Size = new System.Drawing.Size(500, 350);
+            this.dataGridViewPersonnel.TabIndex = 9;
+            // 
             // MainForm
             // 
-            this.ClientSize = new System.Drawing.Size(300, 400);
+            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.dataGridViewPersonnel);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnSupprimerAbsence);
             this.Controls.Add(this.btnModifierAbsence);
@@ -127,32 +145,56 @@ namespace MediaTek86.Views
             this.Controls.Add(this.btnAfficherPersonnel);
             this.Name = "MainForm";
             this.Text = "MediaTek86 - Gestion du Personnel et des Absences";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonnel)).EndInit();
             this.ResumeLayout(false);
+        }
 
+        private void LoadPersonnelData()
+        {
+            DataTable personnelTable = personnelController.GetAllPersonnel();
+            dataGridViewPersonnel.DataSource = personnelTable;
+            dataGridViewPersonnel.Columns["idpersonnel"].Visible = false; // Masquer la colonne ID
         }
 
         private void btnAfficherPersonnel_Click(object sender, EventArgs e)
         {
-            AfficherPersonnelForm afficherPersonnelForm = new AfficherPersonnelForm();
-            afficherPersonnelForm.ShowDialog();
+            LoadPersonnelData();
         }
 
         private void btnAjouterPersonnel_Click(object sender, EventArgs e)
         {
             AjouterPersonnelForm ajouterPersonnelForm = new AjouterPersonnelForm();
             ajouterPersonnelForm.ShowDialog();
+            LoadPersonnelData();
         }
 
         private void btnModifierPersonnel_Click(object sender, EventArgs e)
         {
-            ModifierPersonnelForm modifierPersonnelForm = new ModifierPersonnelForm();
-            modifierPersonnelForm.ShowDialog();
+            if (dataGridViewPersonnel.SelectedRows.Count > 0)
+            {
+                int selectedPersonnelId = (int)dataGridViewPersonnel.SelectedRows[0].Cells["idpersonnel"].Value;
+                string nom = dataGridViewPersonnel.SelectedRows[0].Cells["nom"].Value.ToString();
+                string prenom = dataGridViewPersonnel.SelectedRows[0].Cells["prenom"].Value.ToString();
+                string tel = dataGridViewPersonnel.SelectedRows[0].Cells["tel"].Value.ToString();
+                string mail = dataGridViewPersonnel.SelectedRows[0].Cells["mail"].Value.ToString();
+                int idService = (int)dataGridViewPersonnel.SelectedRows[0].Cells["idservice"].Value;
+
+                Personnel selectedPersonnel = new Personnel(selectedPersonnelId, nom, prenom, tel, mail, idService);
+                ModifierPersonnelForm modifierPersonnelForm = new ModifierPersonnelForm(selectedPersonnel);
+                modifierPersonnelForm.ShowDialog();
+                LoadPersonnelData();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un personnel à modifier.");
+            }
         }
 
         private void btnSupprimerPersonnel_Click(object sender, EventArgs e)
         {
             SupprimerPersonnelForm supprimerPersonnelForm = new SupprimerPersonnelForm();
             supprimerPersonnelForm.ShowDialog();
+            LoadPersonnelData();
         }
 
         private void btnAfficherAbsences_Click(object sender, EventArgs e)
@@ -193,5 +235,6 @@ namespace MediaTek86.Views
         private System.Windows.Forms.Button btnModifierAbsence;
         private System.Windows.Forms.Button btnSupprimerAbsence;
         private System.Windows.Forms.Button btnRetour;
+        private System.Windows.Forms.DataGridView dataGridViewPersonnel;
     }
 }

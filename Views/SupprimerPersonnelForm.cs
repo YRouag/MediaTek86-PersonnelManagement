@@ -1,13 +1,19 @@
 using System;
+using System.Data;
 using System.Windows.Forms;
+using MediaTek86.Controllers;
 
 namespace MediaTek86.Views
 {
     public partial class SupprimerPersonnelForm : Form
     {
+        private PersonnelController personnelController;
+
         public SupprimerPersonnelForm()
         {
             InitializeComponent();
+            personnelController = new PersonnelController();
+            LoadPersonnelList();
         }
 
         private void InitializeComponent()
@@ -54,12 +60,30 @@ namespace MediaTek86.Views
             this.Name = "SupprimerPersonnelForm";
             this.Text = "Supprimer Personnel";
             this.ResumeLayout(false);
+        }
 
+        private void LoadPersonnelList()
+        {
+            DataTable personnelTable = personnelController.GetAllPersonnel();
+            listBoxPersonnel.DataSource = personnelTable;
+            listBoxPersonnel.DisplayMember = "nom"; // Afficher le nom dans la liste
+            listBoxPersonnel.ValueMember = "idpersonnel"; // Utiliser l'id comme valeur
         }
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
-            // Logic to remove personnel
+            if (listBoxPersonnel.SelectedItem != null)
+            {
+                int selectedPersonnelId = (int)listBoxPersonnel.SelectedValue;
+                personnelController.DeletePersonnel(selectedPersonnelId);
+
+                MessageBox.Show("Personnel supprimé avec succès !");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un personnel à supprimer.");
+            }
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)

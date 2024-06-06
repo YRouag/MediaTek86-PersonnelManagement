@@ -1,5 +1,7 @@
 using System;
 using System.Windows.Forms;
+using MediaTek86.dal;
+using MediaTek86.Modele;
 
 namespace MediaTek86.Views
 {
@@ -150,7 +152,20 @@ namespace MediaTek86.Views
 
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
-            // Logic to add new personnel
+            Personnel personnel = new Personnel(
+                0, // L'identifiant sera généré par la base de données
+                textBoxNom.Text,
+                textBoxPrenom.Text,
+                textBoxTel.Text,
+                textBoxMail.Text,
+                int.Parse(comboBoxService.SelectedValue.ToString())
+            );
+
+            PersonnelDal personnelDal = new PersonnelDal();
+            personnelDal.AddPersonnel(personnel);
+
+            MessageBox.Show("Personnel ajouté avec succès !");
+            this.Close();
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
