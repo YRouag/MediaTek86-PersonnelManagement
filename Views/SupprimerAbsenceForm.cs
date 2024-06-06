@@ -12,22 +12,22 @@ namespace MediaTek86.Views
 
         private void InitializeComponent()
         {
-            this.dataGridViewAbsences = new System.Windows.Forms.DataGridView();
+            this.listBoxAbsences = new System.Windows.Forms.ListBox();
             this.buttonSupprimer = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbsences)).BeginInit();
+            this.buttonRetour = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // dataGridViewAbsences
+            // listBoxAbsences
             // 
-            this.dataGridViewAbsences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAbsences.Location = new System.Drawing.Point(12, 12);
-            this.dataGridViewAbsences.Name = "dataGridViewAbsences";
-            this.dataGridViewAbsences.Size = new System.Drawing.Size(360, 200);
-            this.dataGridViewAbsences.TabIndex = 0;
+            this.listBoxAbsences.FormattingEnabled = true;
+            this.listBoxAbsences.Location = new System.Drawing.Point(12, 12);
+            this.listBoxAbsences.Name = "listBoxAbsences";
+            this.listBoxAbsences.Size = new System.Drawing.Size(260, 199);
+            this.listBoxAbsences.TabIndex = 0;
             // 
             // buttonSupprimer
             // 
-            this.buttonSupprimer.Location = new System.Drawing.Point(297, 218);
+            this.buttonSupprimer.Location = new System.Drawing.Point(197, 217);
             this.buttonSupprimer.Name = "buttonSupprimer";
             this.buttonSupprimer.Size = new System.Drawing.Size(75, 23);
             this.buttonSupprimer.TabIndex = 1;
@@ -35,24 +35,40 @@ namespace MediaTek86.Views
             this.buttonSupprimer.UseVisualStyleBackColor = true;
             this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
+            // buttonRetour
+            // 
+            this.buttonRetour.Location = new System.Drawing.Point(116, 217);
+            this.buttonRetour.Name = "buttonRetour";
+            this.buttonRetour.Size = new System.Drawing.Size(75, 23);
+            this.buttonRetour.TabIndex = 2;
+            this.buttonRetour.Text = "Retour";
+            this.buttonRetour.UseVisualStyleBackColor = true;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
+            // 
             // SupprimerAbsenceForm
             // 
-            this.ClientSize = new System.Drawing.Size(384, 251);
+            this.ClientSize = new System.Drawing.Size(284, 252);
+            this.Controls.Add(this.buttonRetour);
             this.Controls.Add(this.buttonSupprimer);
-            this.Controls.Add(this.dataGridViewAbsences);
+            this.Controls.Add(this.listBoxAbsences);
             this.Name = "SupprimerAbsenceForm";
             this.Text = "Supprimer Absence";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbsences)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
-            // Logic to delete the selected absence
+            // Logic to remove absence
         }
 
-        private System.Windows.Forms.DataGridView dataGridViewAbsences;
+        private void buttonRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private System.Windows.Forms.ListBox listBoxAbsences;
         private System.Windows.Forms.Button buttonSupprimer;
+        private System.Windows.Forms.Button buttonRetour;
     }
 }

@@ -12,186 +12,186 @@ namespace MediaTek86.Views
 
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.personnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajouterPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifierPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerPersonnelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.absencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.afficherAbsencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajouterAbsenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifierAbsenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerAbsenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.btnAfficherPersonnel = new System.Windows.Forms.Button();
+            this.btnAjouterPersonnel = new System.Windows.Forms.Button();
+            this.btnModifierPersonnel = new System.Windows.Forms.Button();
+            this.btnSupprimerPersonnel = new System.Windows.Forms.Button();
+            this.btnAfficherAbsences = new System.Windows.Forms.Button();
+            this.btnAjouterAbsence = new System.Windows.Forms.Button();
+            this.btnModifierAbsence = new System.Windows.Forms.Button();
+            this.btnSupprimerAbsence = new System.Windows.Forms.Button();
+            this.btnRetour = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // btnAfficherPersonnel
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.personnelToolStripMenuItem,
-            this.absencesToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.btnAfficherPersonnel.Location = new System.Drawing.Point(50, 30);
+            this.btnAfficherPersonnel.Name = "btnAfficherPersonnel";
+            this.btnAfficherPersonnel.Size = new System.Drawing.Size(200, 30);
+            this.btnAfficherPersonnel.TabIndex = 0;
+            this.btnAfficherPersonnel.Text = "Afficher Personnel";
+            this.btnAfficherPersonnel.UseVisualStyleBackColor = true;
+            this.btnAfficherPersonnel.Click += new System.EventHandler(this.btnAfficherPersonnel_Click);
             // 
-            // personnelToolStripMenuItem
+            // btnAjouterPersonnel
             // 
-            this.personnelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ajouterPersonnelToolStripMenuItem,
-            this.modifierPersonnelToolStripMenuItem,
-            this.supprimerPersonnelToolStripMenuItem});
-            this.personnelToolStripMenuItem.Name = "personnelToolStripMenuItem";
-            this.personnelToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.personnelToolStripMenuItem.Text = "Personnel";
+            this.btnAjouterPersonnel.Location = new System.Drawing.Point(50, 66);
+            this.btnAjouterPersonnel.Name = "btnAjouterPersonnel";
+            this.btnAjouterPersonnel.Size = new System.Drawing.Size(200, 30);
+            this.btnAjouterPersonnel.TabIndex = 1;
+            this.btnAjouterPersonnel.Text = "Ajouter Personnel";
+            this.btnAjouterPersonnel.UseVisualStyleBackColor = true;
+            this.btnAjouterPersonnel.Click += new System.EventHandler(this.btnAjouterPersonnel_Click);
             // 
-            // ajouterPersonnelToolStripMenuItem
+            // btnModifierPersonnel
             // 
-            this.ajouterPersonnelToolStripMenuItem.Name = "ajouterPersonnelToolStripMenuItem";
-            this.ajouterPersonnelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ajouterPersonnelToolStripMenuItem.Text = "Ajouter";
-            this.ajouterPersonnelToolStripMenuItem.Click += new System.EventHandler(this.ajouterPersonnelToolStripMenuItem_Click);
+            this.btnModifierPersonnel.Location = new System.Drawing.Point(50, 102);
+            this.btnModifierPersonnel.Name = "btnModifierPersonnel";
+            this.btnModifierPersonnel.Size = new System.Drawing.Size(200, 30);
+            this.btnModifierPersonnel.TabIndex = 2;
+            this.btnModifierPersonnel.Text = "Modifier Personnel";
+            this.btnModifierPersonnel.UseVisualStyleBackColor = true;
+            this.btnModifierPersonnel.Click += new System.EventHandler(this.btnModifierPersonnel_Click);
             // 
-            // modifierPersonnelToolStripMenuItem
+            // btnSupprimerPersonnel
             // 
-            this.modifierPersonnelToolStripMenuItem.Name = "modifierPersonnelToolStripMenuItem";
-            this.modifierPersonnelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modifierPersonnelToolStripMenuItem.Text = "Modifier";
-            this.modifierPersonnelToolStripMenuItem.Click += new System.EventHandler(this.modifierPersonnelToolStripMenuItem_Click);
+            this.btnSupprimerPersonnel.Location = new System.Drawing.Point(50, 138);
+            this.btnSupprimerPersonnel.Name = "btnSupprimerPersonnel";
+            this.btnSupprimerPersonnel.Size = new System.Drawing.Size(200, 30);
+            this.btnSupprimerPersonnel.TabIndex = 3;
+            this.btnSupprimerPersonnel.Text = "Supprimer Personnel";
+            this.btnSupprimerPersonnel.UseVisualStyleBackColor = true;
+            this.btnSupprimerPersonnel.Click += new System.EventHandler(this.btnSupprimerPersonnel_Click);
             // 
-            // supprimerPersonnelToolStripMenuItem
+            // btnAfficherAbsences
             // 
-            this.supprimerPersonnelToolStripMenuItem.Name = "supprimerPersonnelToolStripMenuItem";
-            this.supprimerPersonnelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.supprimerPersonnelToolStripMenuItem.Text = "Supprimer";
-            this.supprimerPersonnelToolStripMenuItem.Click += new System.EventHandler(this.supprimerPersonnelToolStripMenuItem_Click);
+            this.btnAfficherAbsences.Location = new System.Drawing.Point(50, 202);
+            this.btnAfficherAbsences.Name = "btnAfficherAbsences";
+            this.btnAfficherAbsences.Size = new System.Drawing.Size(200, 30);
+            this.btnAfficherAbsences.TabIndex = 4;
+            this.btnAfficherAbsences.Text = "Afficher Absences";
+            this.btnAfficherAbsences.UseVisualStyleBackColor = true;
+            this.btnAfficherAbsences.Click += new System.EventHandler(this.btnAfficherAbsences_Click);
             // 
-            // absencesToolStripMenuItem
+            // btnAjouterAbsence
             // 
-            this.absencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.afficherAbsencesToolStripMenuItem,
-            this.ajouterAbsenceToolStripMenuItem,
-            this.modifierAbsenceToolStripMenuItem,
-            this.supprimerAbsenceToolStripMenuItem});
-            this.absencesToolStripMenuItem.Name = "absencesToolStripMenuItem";
-            this.absencesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.absencesToolStripMenuItem.Text = "Absences";
+            this.btnAjouterAbsence.Location = new System.Drawing.Point(50, 238);
+            this.btnAjouterAbsence.Name = "btnAjouterAbsence";
+            this.btnAjouterAbsence.Size = new System.Drawing.Size(200, 30);
+            this.btnAjouterAbsence.TabIndex = 5;
+            this.btnAjouterAbsence.Text = "Ajouter Absence";
+            this.btnAjouterAbsence.UseVisualStyleBackColor = true;
+            this.btnAjouterAbsence.Click += new System.EventHandler(this.btnAjouterAbsence_Click);
             // 
-            // afficherAbsencesToolStripMenuItem
+            // btnModifierAbsence
             // 
-            this.afficherAbsencesToolStripMenuItem.Name = "afficherAbsencesToolStripMenuItem";
-            this.afficherAbsencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.afficherAbsencesToolStripMenuItem.Text = "Afficher";
-            this.afficherAbsencesToolStripMenuItem.Click += new System.EventHandler(this.afficherAbsencesToolStripMenuItem_Click);
+            this.btnModifierAbsence.Location = new System.Drawing.Point(50, 274);
+            this.btnModifierAbsence.Name = "btnModifierAbsence";
+            this.btnModifierAbsence.Size = new System.Drawing.Size(200, 30);
+            this.btnModifierAbsence.TabIndex = 6;
+            this.btnModifierAbsence.Text = "Modifier Absence";
+            this.btnModifierAbsence.UseVisualStyleBackColor = true;
+            this.btnModifierAbsence.Click += new System.EventHandler(this.btnModifierAbsence_Click);
             // 
-            // ajouterAbsenceToolStripMenuItem
+            // btnSupprimerAbsence
             // 
-            this.ajouterAbsenceToolStripMenuItem.Name = "ajouterAbsenceToolStripMenuItem";
-            this.ajouterAbsenceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ajouterAbsenceToolStripMenuItem.Text = "Ajouter";
-            this.ajouterAbsenceToolStripMenuItem.Click += new System.EventHandler(this.ajouterAbsenceToolStripMenu
+            this.btnSupprimerAbsence.Location = new System.Drawing.Point(50, 310);
+            this.btnSupprimerAbsence.Name = "btnSupprimerAbsence";
+            this.btnSupprimerAbsence.Size = new System.Drawing.Size(200, 30);
+            this.btnSupprimerAbsence.TabIndex = 7;
+            this.btnSupprimerAbsence.Text = "Supprimer Absence";
+            this.btnSupprimerAbsence.UseVisualStyleBackColor = true;
+            this.btnSupprimerAbsence.Click += new System.EventHandler(this.btnSupprimerAbsence_Click);
             // 
-            // ajouterAbsenceToolStripMenuItem
+            // btnRetour
             // 
-            this.ajouterAbsenceToolStripMenuItem.Name = "ajouterAbsenceToolStripMenuItem";
-            this.ajouterAbsenceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ajouterAbsenceToolStripMenuItem.Text = "Ajouter";
-            this.ajouterAbsenceToolStripMenuItem.Click += new System.EventHandler(this.ajouterAbsenceToolStripMenuItem_Click);
-            // 
-            // modifierAbsenceToolStripMenuItem
-            // 
-            this.modifierAbsenceToolStripMenuItem.Name = "modifierAbsenceToolStripMenuItem";
-            this.modifierAbsenceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modifierAbsenceToolStripMenuItem.Text = "Modifier";
-            this.modifierAbsenceToolStripMenuItem.Click += new System.EventHandler(this.modifierAbsenceToolStripMenuItem_Click);
-            // 
-            // supprimerAbsenceToolStripMenuItem
-            // 
-            this.supprimerAbsenceToolStripMenuItem.Name = "supprimerAbsenceToolStripMenuItem";
-            this.supprimerAbsenceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.supprimerAbsenceToolStripMenuItem.Text = "Supprimer";
-            this.supprimerAbsenceToolStripMenuItem.Click += new System.EventHandler(this.supprimerAbsenceToolStripMenuItem_Click);
+            this.btnRetour.Location = new System.Drawing.Point(50, 358);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(200, 30);
+            this.btnRetour.TabIndex = 8;
+            this.btnRetour.Text = "Retour à la Connexion";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // MainForm
             // 
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(300, 400);
+            this.Controls.Add(this.btnRetour);
+            this.Controls.Add(this.btnSupprimerAbsence);
+            this.Controls.Add(this.btnModifierAbsence);
+            this.Controls.Add(this.btnAjouterAbsence);
+            this.Controls.Add(this.btnAfficherAbsences);
+            this.Controls.Add(this.btnSupprimerPersonnel);
+            this.Controls.Add(this.btnModifierPersonnel);
+            this.Controls.Add(this.btnAjouterPersonnel);
+            this.Controls.Add(this.btnAfficherPersonnel);
             this.Name = "MainForm";
             this.Text = "MediaTek86 - Gestion du Personnel et des Absences";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
-         }
-
-        private void ajouterPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Ouvrir le formulaire pour ajouter un personnel
-            PersonnelForm personnelForm = new PersonnelForm();
-            personnelForm.Text = "Ajouter Personnel";
-            personnelForm.ShowDialog();
         }
 
-        private void modifierPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAfficherPersonnel_Click(object sender, EventArgs e)
         {
-            // Ouvrir le formulaire pour modifier un personnel
-            // Pour la modification, il peut être nécessaire de passer des informations supplémentaires pour identifier le personnel
-            PersonnelForm personnelForm = new PersonnelForm();
-            personnelForm.Text = "Modifier Personnel";
-            personnelForm.ShowDialog();
+            AfficherPersonnelForm afficherPersonnelForm = new AfficherPersonnelForm();
+            afficherPersonnelForm.ShowDialog();
         }
 
-        private void supprimerPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAjouterPersonnel_Click(object sender, EventArgs e)
         {
-            // Ouvrir un formulaire ou une boîte de dialogue pour supprimer un personnel
+            AjouterPersonnelForm ajouterPersonnelForm = new AjouterPersonnelForm();
+            ajouterPersonnelForm.ShowDialog();
+        }
+
+        private void btnModifierPersonnel_Click(object sender, EventArgs e)
+        {
+            ModifierPersonnelForm modifierPersonnelForm = new ModifierPersonnelForm();
+            modifierPersonnelForm.ShowDialog();
+        }
+
+        private void btnSupprimerPersonnel_Click(object sender, EventArgs e)
+        {
             SupprimerPersonnelForm supprimerPersonnelForm = new SupprimerPersonnelForm();
             supprimerPersonnelForm.ShowDialog();
         }
 
-        private void afficherAbsencesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAfficherAbsences_Click(object sender, EventArgs e)
         {
-            // Ouvrir le formulaire pour afficher les absences
-            AbsenceForm absenceForm = new AbsenceForm();
-            absenceForm.ShowDialog();
+            AfficherAbsenceForm afficherAbsenceForm = new AfficherAbsenceForm();
+            afficherAbsenceForm.ShowDialog();
         }
 
-        private void ajouterAbsenceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAjouterAbsence_Click(object sender, EventArgs e)
         {
-            // Ouvrir le formulaire pour ajouter une absence
-            AbsenceEditForm absenceEditForm = new AbsenceEditForm();
-            absenceEditForm.Text = "Ajouter Absence";
-            absenceEditForm.ShowDialog();
+            AjouterAbsenceForm ajouterAbsenceForm = new AjouterAbsenceForm();
+            ajouterAbsenceForm.ShowDialog();
         }
 
-        private void modifierAbsenceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnModifierAbsence_Click(object sender, EventArgs e)
         {
-            // Ouvrir le formulaire pour modifier une absence
-            // Pour la modification, il peut être nécessaire de passer des informations supplémentaires pour identifier l'absence
-            AbsenceEditForm absenceEditForm = new AbsenceEditForm();
-            absenceEditForm.Text = "Modifier Absence";
-            absenceEditForm.ShowDialog();
+            ModifierAbsenceForm modifierAbsenceForm = new ModifierAbsenceForm();
+            modifierAbsenceForm.ShowDialog();
         }
 
-        private void supprimerAbsenceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnSupprimerAbsence_Click(object sender, EventArgs e)
         {
-            // Ouvrir un formulaire ou une boîte de dialogue pour supprimer une absence
             SupprimerAbsenceForm supprimerAbsenceForm = new SupprimerAbsenceForm();
             supprimerAbsenceForm.ShowDialog();
         }
 
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-            private System.Windows.Forms.MenuStrip menuStrip1;
-            private System.Windows.Forms.ToolStripMenuItem personnelToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem ajouterPersonnelToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem modifierPersonnelToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem supprimerPersonnelToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem absencesToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem afficherAbsencesToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem ajouterAbsenceToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem modifierAbsenceToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem supprimerAbsenceToolStripMenuItem;
-            }
-            }
+        private System.Windows.Forms.Button btnAfficherPersonnel;
+        private System.Windows.Forms.Button btnAjouterPersonnel;
+        private System.Windows.Forms.Button btnModifierPersonnel;
+        private System.Windows.Forms.Button btnSupprimerPersonnel;
+        private System.Windows.Forms.Button btnAfficherAbsences;
+        private System.Windows.Forms.Button btnAjouterAbsence;
+        private System.Windows.Forms.Button btnModifierAbsence;
+        private System.Windows.Forms.Button btnSupprimerAbsence;
+        private System.Windows.Forms.Button btnRetour;
+    }
+}

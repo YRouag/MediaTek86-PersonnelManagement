@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace MediaTek86.Views
 {
-    public partial class PersonnelForm : Form
+    public partial class AjouterPersonnelForm : Form
     {
-        public PersonnelForm()
+        public AjouterPersonnelForm()
         {
             InitializeComponent();
         }
@@ -23,6 +23,7 @@ namespace MediaTek86.Views
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.comboBoxService = new System.Windows.Forms.ComboBox();
             this.buttonEnregistrer = new System.Windows.Forms.Button();
+            this.buttonRetour = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelNom
@@ -114,10 +115,22 @@ namespace MediaTek86.Views
             this.buttonEnregistrer.TabIndex = 10;
             this.buttonEnregistrer.Text = "Enregistrer";
             this.buttonEnregistrer.UseVisualStyleBackColor = true;
+            this.buttonEnregistrer.Click += new System.EventHandler(this.buttonEnregistrer_Click);
             // 
-            // PersonnelForm
+            // buttonRetour
+            // 
+            this.buttonRetour.Location = new System.Drawing.Point(116, 141);
+            this.buttonRetour.Name = "buttonRetour";
+            this.buttonRetour.Size = new System.Drawing.Size(75, 23);
+            this.buttonRetour.TabIndex = 11;
+            this.buttonRetour.Text = "Retour";
+            this.buttonRetour.UseVisualStyleBackColor = true;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
+            // 
+            // AjouterPersonnelForm
             // 
             this.ClientSize = new System.Drawing.Size(284, 176);
+            this.Controls.Add(this.buttonRetour);
             this.Controls.Add(this.buttonEnregistrer);
             this.Controls.Add(this.comboBoxService);
             this.Controls.Add(this.textBoxMail);
@@ -129,11 +142,20 @@ namespace MediaTek86.Views
             this.Controls.Add(this.labelTel);
             this.Controls.Add(this.labelPrenom);
             this.Controls.Add(this.labelNom);
-            this.Name = "PersonnelForm";
-            this.Text = "Ajouter/Modifier Personnel";
+            this.Name = "AjouterPersonnelForm";
+            this.Text = "Ajouter Personnel";
             this.ResumeLayout(false);
             this.PerformLayout();
+        }
 
+        private void buttonEnregistrer_Click(object sender, EventArgs e)
+        {
+            // Logic to add new personnel
+        }
+
+        private void buttonRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private System.Windows.Forms.Label labelNom;
@@ -147,5 +169,6 @@ namespace MediaTek86.Views
         private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.ComboBox comboBoxService;
         private System.Windows.Forms.Button buttonEnregistrer;
+        private System.Windows.Forms.Button buttonRetour;
     }
 }
